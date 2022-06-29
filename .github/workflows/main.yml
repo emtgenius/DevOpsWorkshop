@@ -1,0 +1,25 @@
+name: Deploy
+'on':
+  workflow_run:
+    workflows:
+      - Pack Solution
+    branches:
+      - main
+    types:
+      - completed
+  workflow_dispatch: null
+jobs:
+  deploy:
+    runs-on: windows-latest
+    environment: Production
+    steps:
+      - uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: pack-solution.yml
+          name: packed-solution
+      - uses: microsoft/powerplatform-actions/import-solution@v0
+        with:
+          environment-url: 'https://productionjawn.crm.dynamics.com'
+          user-name: '${{ secrets.USERNAME }}'
+          password-secret: '${{ secrets.PASSWORD }}'
+          solution-file: DevOpsWorkshop.zip
