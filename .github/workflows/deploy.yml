@@ -19,7 +19,7 @@ jobs:
           name: packed-solution
       - uses: microsoft/powerplatform-actions/import-solution@v0
         with:
-          environment-url: 'https://org76f813e8.crm.dynamics.com'
+          environment-url: 'https://orgce94d4fb.crm.dynamics.com'
           user-name: '${{ secrets.USERNAME }}'
           password-secret: '${{ secrets.PASSWORD }}'
           solution-file: DevOpsWorkshop.zip
