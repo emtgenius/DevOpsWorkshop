@@ -1,16 +1,16 @@
 name: Pack Solution
-on:
+'on':
   push:
     paths:
       - contents/**
-  workflow_dispatch:
+  workflow_dispatch: null
 jobs:
   build:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
       - uses: microsoft/powerplatform-actions/pack-solution@v0
-        with: 
+        with:
           solution-file: out/DevOpsWorkshop.zip
           solution-folder: contents
           solution-type: Unmanaged
